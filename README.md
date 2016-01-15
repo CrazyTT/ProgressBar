@@ -8,7 +8,7 @@
 #  参考技术  https://github.com/jd-alexander/LikeButton
 
 
-![](https://github.com/CrazyTT/ChartView/blob/master/pic/44.gif?raw=true)
+![](https://github.com/CrazyTT/ProgressBar/blob/master/pic/44.gif?raw=true)
 
 
 
