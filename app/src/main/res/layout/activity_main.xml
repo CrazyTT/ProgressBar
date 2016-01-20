@@ -51,9 +51,7 @@
         android:id="@+id/login_progress"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
         android:indeterminate="true"
         android:indeterminateDrawable="@drawable/demo_login_progress"
         android:visibility="visible"/>
