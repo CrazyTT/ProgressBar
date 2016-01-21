@@ -4,15 +4,18 @@ import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends Activity {
     private ImageView btn_anim, btn_anim2, btn_anim3, btn_anim4;
-
     private AnimationDrawable animationDrawable, animationDrawable2, animationDrawable3, animationDrawable4;
-
     private int flag = 0;
 
     @Override
@@ -23,7 +26,36 @@ public class MainActivity extends Activity {
         initTwo();
         initThree();
         initFour();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("SENSORID", "500004DF6A4A");
+        params.put("KEY", "v34uvm9y839vg6y23mhLSKDF84f10a");
+        for (int i = 0; i < 10; i++) {
+            HttpUtils.getInstance().executePost("http://weiguo.hanwei.cn/smart/hwmobile/smart/d002!retrieveRealData", params, new HttpUtilsCallBack<Testw>() {
 
+                @Override
+                public void onError(String str) {
+                    Toast.makeText(MainActivity.this, str, Toast.LENGTH_LONG);
+                }
+
+                @Override
+                public void onSuccess(Testw reponse) {
+                    Toast.makeText(MainActivity.this, reponse.getMessage(), Toast.LENGTH_LONG).show();
+
+                }
+            }, Testw.class);
+        }
+        HttpUtils.getInstance().executeGet("http://www.baidu.com", null, new HttpUtilsCallBack<String>() {
+            @Override
+            public void onError(String str) {
+
+            }
+
+            @Override
+            public void onSuccess(String object) {
+                Log.e("baidu+++", object);
+
+            }
+        }, String.class);
     }
 
     private void initFour() {
