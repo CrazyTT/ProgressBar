@@ -41,13 +41,16 @@ public class HttpUtils<T> {
         OkHttpUtils.get().url(url).params(params).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
+                if (BuildConfig.DEBUG) {
+                    KLog.e(e.getMessage());
+                }
                 callback.onError("网络错误");
             }
 
             @Override
             public void onResponse(String response) {
                 if (BuildConfig.DEBUG) {
-                    KLog.json(url, response);
+                    KLog.json(response, response);
                 }
                 T responseObject = JsonUtils.getInstance().json2object(response, mClass);
                 if (responseObject != null) {
@@ -88,13 +91,16 @@ public class HttpUtils<T> {
         OkHttpUtils.post().url(url).params(params).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
+                if (BuildConfig.DEBUG) {
+                    KLog.e(e.getMessage());
+                }
                 callback.onError("网络错误");
             }
 
             @Override
             public void onResponse(String response) {
                 if (BuildConfig.DEBUG) {
-                    KLog.json(url, response);
+                    KLog.json("response", response);
                 }
                 T responseObject = (T) JsonUtils.getInstance().json2object(response, mClass);
                 if (responseObject != null) {
